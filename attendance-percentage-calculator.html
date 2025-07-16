@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Percentage Calculator | Online Class Tracker Tool</title>
+    <meta name="description" content="Easily calculate your class attendance percentage online. Just input total classes and classes attended to get your accurate attendance.">
+    <link rel="canonical" href="https://attendancecalculator.com/attendance-percentage-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Attendance Percentage Calculator - Calculate Your Class Attendance">
+    <meta property="og:description" content="Free attendance percentage calculator to instantly calculate your class attendance percentage. Enter total classes and attended classes to get accurate results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.com/attendance-percentage-calculator.html">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Attendance Percentage Calculator - Calculate Your Class Attendance">
+    <meta name="twitter:description" content="Free attendance percentage calculator to instantly calculate your class attendance percentage. Enter total classes and attended classes to get accurate results.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Attendance Percentage Calculator",
+        "description": "Free online tool to calculate attendance percentage for students and teachers",
+        "url": "https://attendancecalculator.com/attendance-percentage-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Attendance Percentage Calculator",
+                "item": "https://attendancecalculator.com/attendance-percentage-calculator.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I calculate my attendance percentage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Divide the number of classes attended by the total number of classes conducted, then multiply by 100. Formula: (Classes Attended ÷ Total Classes) × 100 = Attendance Percentage."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "What is considered good attendance percentage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most institutions require 75% minimum attendance. 85% and above is considered excellent, 75-84% is good, and below 75% may result in academic penalties."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use this calculator for multiple subjects?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can calculate attendance for each subject separately. For tracking multiple subjects simultaneously, use our Class Attendance Tracker tool."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav" id="mobileNav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="tool-navigation">
+                <div class="container">
+                    <a href="/attendance-percentage-calculator.html" class="tool-nav-link active">Attendance %</a>
+                    <a href="/required-attendance-calculator.html" class="tool-nav-link">Required Classes</a>
+                    <a href="/bunk-calculator.html" class="tool-nav-link">Bunk Calculator</a>
+                    <a href="/class-attendance-tracker.html" class="tool-nav-link">Class Tracker</a>
+                    <a href="/attendance-to-grade-converter.html" class="tool-nav-link">Grade Converter</a>
+                    <a href="/working-days-calculator.html" class="tool-nav-link">Working Days</a>
+                </div>
+            </div>
+
+            <div class="hero">
+                <h1>Attendance Percentage Calculator</h1>
+                <p>Calculate your current attendance percentage instantly. Know exactly where you stand with your class attendance requirements.</p>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Your Attendance Percentage</h2>
+                    <form id="attendanceForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="totalClasses">Total Classes Conducted</label>
+                            <input type="number" id="totalClasses" name="totalClasses" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendedClasses">Classes Attended</label>
+                            <input type="number" id="attendedClasses" name="attendedClasses" min="0" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Attendance Percentage</button>
+                    </form>
+
+                    <div id="result" class="result hidden">
+                        <h3>Your Attendance Percentage</h3>
+                        <div class="percentage-display">
+                            <span id="percentageValue">0%</span>
+                        </div>
+                        <div class="result-status">
+                            <span id="statusText"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>How to Use the Attendance Percentage Calculator</h2>
+                <p>Our attendance percentage calculator is designed to help students quickly determine their current attendance status. This tool is essential for tracking academic progress and ensuring you meet institutional requirements.</p>
+
+                <h3>Step-by-Step Guide</h3>
+                <ol>
+                    <li><strong>Enter Total Classes:</strong> Input the total number of classes conducted in your course or semester</li>
+                    <li><strong>Enter Attended Classes:</strong> Input how many classes you have actually attended</li>
+                    <li><strong>Get Results:</strong> Click calculate to see your attendance percentage instantly</li>
+                    <li><strong>Interpret Results:</strong> Check if you meet your institution's minimum attendance requirement</li>
+                </ol>
+
+                <h3>Understanding Attendance Percentage</h3>
+                <p>Attendance percentage is calculated using the simple formula:</p>
+                <p><strong>Attendance Percentage = (Classes Attended ÷ Total Classes) × 100</strong></p>
+
+                <h3>Common Attendance Requirements</h3>
+                <p>Most educational institutions have specific attendance requirements:</p>
+                <ul>
+                    <li><strong>75% Attendance:</strong> Most common requirement in universities and colleges</li>
+                    <li><strong>80% Attendance:</strong> Required by many professional courses and strict institutions</li>
+                    <li><strong>85% Attendance:</strong> Often required for scholarship students</li>
+                    <li><strong>90% Attendance:</strong> High-performance programs and honors courses</li>
+                </ul>
+
+                <h3>Why Track Attendance Percentage?</h3>
+                <p>Monitoring your attendance percentage is crucial for several reasons:</p>
+                <ul>
+                    <li><strong>Exam Eligibility:</strong> Most institutions require minimum attendance to appear for exams</li>
+                    <li><strong>Academic Standing:</strong> Poor attendance can affect your academic record</li>
+                    <li><strong>Scholarship Requirements:</strong> Many scholarships require maintaining high attendance</li>
+                    <li><strong>Course Completion:</strong> Attendance often contributes to final grades</li>
+                    <li><strong>Early Warning:</strong> Helps identify attendance issues before they become critical</li>
+                </ul>
+
+                <h3>Features of Our Calculator</h3>
+                <p>Our attendance percentage calculator offers several advantages:</p>
+                <ul>
+                    <li><strong>Instant Results:</strong> Get your percentage calculated immediately</li>
+                    <li><strong>Color-Coded Status:</strong> Visual indicators show if you're meeting requirements</li>
+                    <li><strong>Mobile Friendly:</strong> Use on any device, anywhere</li>
+                    <li><strong>No Registration:</strong> Completely free and anonymous</li>
+                    <li><strong>Accurate Calculations:</strong> Precise mathematical formulas</li>
+                </ul>
+
+                <h3>Tips for Maintaining Good Attendance</h3>
+                <p>Here are practical strategies to maintain your attendance percentage:</p>
+                <ul>
+                    <li><strong>Set Reminders:</strong> Use phone alarms or calendar notifications</li>
+                    <li><strong>Plan Ahead:</strong> Schedule medical appointments during free periods</li>
+                    <li><strong>Track Daily:</strong> Use our calculator regularly to monitor progress</li>
+                    <li><strong>Communicate:</strong> Inform instructors about unavoidable absences</li>
+                    <li><strong>Make Up:</strong> Attend make-up sessions when available</li>
+                </ul>
+
+                <h3>What If Your Percentage Is Low?</h3>
+                <p>If your attendance percentage is below requirements, don't panic:</p>
+                <ul>
+                    <li>Use our <a href="/required-attendance-calculator.html">Required Attendance Calculator</a> to see how many classes you need to attend</li>
+                    <li>Check our <a href="/bunk-calculator.html">Bunk Calculator</a> to understand your safe absence limits</li>
+                    <li>Speak with your academic advisor about possible solutions</li>
+                    <li>Look into institutional policies for medical or emergency absences</li>
+                </ul>
+
+                <h3>Related Calculators</h3>
+                <p>Enhance your attendance management with our other tools:</p>
+                <ul>
+                    <li><a href="/required-attendance-calculator.html">Required Attendance Calculator</a> - Plan classes needed to reach target percentage</li>
+                    <li><a href="/bunk-calculator.html">Bunk Calculator</a> - Calculate how many classes you can safely skip</li>
+                    <li><a href="/class-attendance-tracker.html">Class Attendance Tracker</a> - Track multiple subjects simultaneously</li>
+                    <li><a href="/attendance-to-grade-converter.html">Grade Converter</a> - Convert attendance percentage to grades</li>
+                </ul>
+
+                <h3>Frequently Asked Questions</h3>
+                <h4>How accurate is the attendance percentage calculator?</h4>
+                <p>Our calculator uses precise mathematical formulas and provides accurate results to two decimal places. The accuracy depends on the correctness of the data you input.</p>
+
+                <h4>Can I use this for multiple subjects?</h4>
+                <p>This calculator works for one subject at a time. For tracking multiple subjects, use our <a href="/class-attendance-tracker.html">Class Attendance Tracker</a>.</p>
+
+                <h4>What if I have partial attendance for a class?</h4>
+                <p>Most institutions count partial attendance as either present or absent. Check your institution's policy and count accordingly.</p>
+
+                <h4>Does this calculator save my data?</h4>
+                <p>No, we don't store any of your attendance data. All calculations are performed locally in your browser for privacy.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

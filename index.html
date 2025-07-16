@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Attendance Calculator Online | Track & Improve Class Attendance</title>
+    <meta name="description" content="Use our smart attendance calculator tools to check your attendance percentage, calculate how many classes you can miss, and plan ahead for exams.">
+    <link rel="canonical" href="https://attendancecalculator.online/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Attendance Percentage Calculator - Free Online Tool">
+    <meta property="og:description" content="Calculate your attendance percentage instantly with our free online tool. Perfect for students and teachers to track academic attendance requirements.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.online/">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Attendance Calculator Online | Track & Improve Class Attendance">
+    <meta name="twitter:description" content="Use our smart attendance calculator tools to check your attendance percentage, calculate how many classes you can miss, and plan ahead for exams.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Attendance Calculator",
+        "url": "https://attendancecalculator.online/",
+        "description": "Free online attendance calculator tools for students and teachers",
+        "sameAs": [
+            "https://attendancecalculator.online/"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Attendance Calculator Tools",
+        "description": "Free online tools to calculate attendance percentage, plan bunking, and track class attendance",
+        "url": "https://attendancecalculator.online/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.online/"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav" id="mobileNav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>Attendance Calculator</h1>
+                <p>Your complete attendance management solution with 6 powerful calculators. Perfect for students tracking their academic attendance requirements.</p>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Your Attendance</h2>
+                    <form id="attendanceForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="totalClasses">Total Classes Conducted</label>
+                            <input type="number" id="totalClasses" name="totalClasses" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendedClasses">Classes Attended</label>
+                            <input type="number" id="attendedClasses" name="attendedClasses" min="0" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Attendance</button>
+                    </form>
+
+                    <div id="result" class="result hidden">
+                        <h3>Your Attendance Percentage</h3>
+                        <div class="percentage-display">
+                            <span id="percentageValue">0%</span>
+                        </div>
+                        <div class="result-status">
+                            <span id="statusText"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Your Complete Class Attendance Tracker and Academic Performance Monitor</h2>
+                <p>Welcome to Attendance Calculator - your one-stop destination for all attendance-related calculations and academic planning. We offer a comprehensive suite of <strong>6 powerful attendance tracker tools</strong> designed to help students, teachers, and academic staff manage class calculator requirements effectively.</p>
+
+                <h3>Our Free Attendance Calculator and Bunk Planner Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h4><a href="/attendance-percentage-calculator.html">Attendance Percentage Calculator</a></h4>
+                        <p>Calculate your current attendance percentage instantly. Know exactly where you stand with your class attendance and whether you meet institutional requirements.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="/required-attendance-calculator.html">Required Attendance Calculator</a></h4>
+                        <p>Discover how many consecutive classes you need to attend to reach your target percentage. Perfect for planning your path to meet minimum attendance requirements.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="/bunk-calculator.html">Bunk Calculator</a></h4>
+                        <p>Find out how many classes you can safely skip while maintaining your minimum attendance percentage. Plan your schedule with confidence.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="/class-attendance-tracker.html">Class Attendance Tracker</a></h4>
+                        <p>Track attendance across multiple subjects simultaneously. Get a comprehensive overview of your overall academic attendance performance.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="/attendance-to-grade-converter.html">Attendance to Grade Converter</a></h4>
+                        <p>Convert your attendance percentage to letter grades and GPA. Understand how your attendance translates to academic performance.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="/working-days-calculator.html">Working Days Calculator</a></h4>
+                        <p>Calculate working days between two dates for academic planning. Essential for semester planning and attendance forecasting.</p>
+                    </div>
+                </div>
+
+                <h3>Why Choose Our Attendance Calculators?</h3>
+                <p>Our platform stands out with features designed for the modern student:</p>
+                <ul>
+                    <li><strong>100% Free:</strong> All 6 calculators are completely free to use with no hidden costs</li>
+                    <li><strong>Instant Results:</strong> Get accurate calculations in real-time without waiting</li>
+                    <li><strong>Mobile Responsive:</strong> Use on any device - phone, tablet, or computer</li>
+                    <li><strong>Privacy Protected:</strong> No registration required, your data stays with you</li>
+                    <li><strong>Academic Standards:</strong> Built following institutional attendance policies</li>
+                    <li><strong>User-Friendly:</strong> Simple interfaces designed for students of all levels</li>
+                </ul>
+
+                <h3>Common Attendance Scenarios We Help With</h3>
+                <p>Our calculators are designed to handle various academic situations:</p>
+                <ul>
+                    <li><strong>Meeting 75% Attendance:</strong> The most common institutional requirement</li>
+                    <li><strong>Catching Up:</strong> When you're behind and need to improve quickly</li>
+                    <li><strong>Strategic Planning:</strong> Balancing attendance with other commitments</li>
+                    <li><strong>Multi-Subject Tracking:</strong> Managing attendance across different courses</li>
+                    <li><strong>Grade Impact Assessment:</strong> Understanding how attendance affects your grades</li>
+                    <li><strong>Semester Planning:</strong> Long-term attendance and academic planning</li>
+                </ul>
+
+                <h3>How to Get Started</h3>
+                <p>Getting started with our calculators is simple:</p>
+                <ol>
+                    <li>Choose the calculator that matches your need from the Tools menu above</li>
+                    <li>Enter your attendance data (total classes, attended classes, etc.)</li>
+                    <li>Get instant, accurate results with actionable insights</li>
+                    <li>Use the results to plan your academic schedule effectively</li>
+                </ol>
+
+                <h3>Attendance Shortage Calculator - Find Your Goal</h3>
+                <p>Not sure what attendance percentage to aim for? Our <a href="/required-attendance-calculator.html">Required Attendance Calculator</a> helps you set and achieve realistic attendance targets based on your current situation. Whether you need to reach 75%, 80%, or 85% attendance, our class calculator shows you exactly how many classes you need to attend. Want to know how many classes you can bunk? Use our <a href="/bunk-calculator.html">Bunk Planner tool</a> to plan your academic schedule safely.</p>
+
+                <h3>Who Uses Our Calculators?</h3>
+                <p>Our tools serve thousands of users including:</p>
+                <ul>
+                    <li><strong>Students:</strong> From high school to postgraduate levels</li>
+                    <li><strong>Teachers:</strong> For class management and student guidance</li>
+                    <li><strong>Academic Counselors:</strong> Helping students meet requirements</li>
+                    <li><strong>Parents:</strong> Monitoring their children's academic progress</li>
+                    <li><strong>Educational Institutions:</strong> Supporting attendance policy implementation</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

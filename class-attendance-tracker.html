@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Deficit Analyzer | Are You in Trouble?</title>
+    <meta name="description" content="Analyze your attendance records and know exactly how much you're lacking before it's too late.">
+    <link rel="canonical" href="https://attendancecalculator.com/class-attendance-tracker.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Class Attendance Tracker - Multi-Subject Attendance Manager">
+    <meta property="og:description" content="Track attendance across multiple subjects and classes. Comprehensive attendance tracker for students managing multiple courses simultaneously.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.com/class-attendance-tracker.html">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Class Attendance Tracker - Multi-Subject Attendance Manager">
+    <meta name="twitter:description" content="Track attendance across multiple subjects and classes. Comprehensive attendance tracker for students managing multiple courses simultaneously.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Class Attendance Tracker",
+        "description": "Track attendance across multiple subjects and classes for comprehensive attendance management",
+        "url": "https://attendancecalculator.com/class-attendance-tracker.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Class Attendance Tracker",
+                "item": "https://attendancecalculator.com/class-attendance-tracker.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I track multiple subjects simultaneously?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! This tracker allows you to monitor attendance across multiple subjects and calculates your overall attendance percentage automatically."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "How is overall attendance calculated with multiple subjects?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Overall attendance is calculated by summing all attended classes across subjects and dividing by the total classes conducted across all subjects."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I remove subjects from the tracker?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can remove subjects using the 'Remove' button next to each subject. The overall attendance will automatically recalculate."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>Class Attendance Tracker</h1>
+                <p>Track your attendance across multiple subjects and get a comprehensive overview of your academic standing.</p>
+            </div>
+
+            <div class="tool-navigation">
+                <div class="container">
+                    <a href="/attendance-percentage-calculator.html" class="tool-nav-link">Attendance %</a>
+                    <a href="/required-attendance-calculator.html" class="tool-nav-link">Required Classes</a>
+                    <a href="/bunk-calculator.html" class="tool-nav-link">Bunk Calculator</a>
+                    <a href="/class-attendance-tracker.html" class="tool-nav-link active">Class Tracker</a>
+                    <a href="/attendance-to-grade-converter.html" class="tool-nav-link">Grade Converter</a>
+                    <a href="/working-days-calculator.html" class="tool-nav-link">Working Days</a>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Add Subject</h2>
+                    <form id="trackerForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="subjectName">Subject Name</label>
+                            <input type="text" id="subjectName" name="subjectName" placeholder="e.g., Mathematics" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subjectTotal">Total Classes</label>
+                            <input type="number" id="subjectTotal" name="subjectTotal" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subjectAttended">Classes Attended</label>
+                            <input type="number" id="subjectAttended" name="subjectAttended" min="0" required>
+                        </div>
+                        <button type="button" onclick="addSubject()" class="calculate-btn">Add Subject</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Your Subjects</h2>
+                    <div id="subjectList" class="subject-list">
+                        <p class="empty-state">No subjects added yet. Add a subject above to get started.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div id="overallAttendance" class="calculator-card hidden">
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Master Your Multi-Subject Attendance Tracking</h2>
+                <p>The Class Attendance Tracker is a comprehensive tool designed for students juggling multiple subjects, courses, or classes simultaneously. Instead of calculating attendance for each subject separately, this tracker provides a centralized dashboard where you can monitor all your academic commitments in one place.</p>
+
+                <h3>Why Use a Multi-Subject Tracker?</h3>
+                <p>Modern academic programs often require students to manage attendance across various subjects, each with different class schedules, requirements, and attendance policies. Our tracker helps you:</p>
+                <ul>
+                    <li>Maintain a bird's-eye view of all your academic commitments</li>
+                    <li>Identify subjects where attendance needs immediate attention</li>
+                    <li>Calculate your overall academic attendance percentage</li>
+                    <li>Make informed decisions about which classes to prioritize</li>
+                    <li>Track progress toward attendance goals across all subjects</li>
+                </ul>
+
+                <h3>How to Use the Class Attendance Tracker</h3>
+                <p>Getting started with the tracker is straightforward:</p>
+                <ol>
+                    <li><strong>Add Each Subject:</strong> Enter the name of your subject or course (e.g., "Advanced Mathematics," "Computer Science," "Literature").</li>
+                    <li><strong>Input Class Data:</strong> For each subject, enter the total number of classes conducted and the number you've attended.</li>
+                    <li><strong>Review Individual Performance:</strong> Each subject will display its attendance percentage with color-coded status indicators.</li>
+                    <li><strong>Monitor Overall Attendance:</strong> The tracker automatically calculates your cumulative attendance across all subjects.</li>
+                    <li><strong>Update Regularly:</strong> As new classes are conducted, update the numbers to maintain accurate tracking.</li>
+                </ol>
+
+                <h3>Understanding the Color-Coded System</h3>
+                <p>The tracker uses an intuitive color system to help you quickly assess your attendance status:</p>
+                <ul>
+                    <li><strong>Green (75% and above):</strong> Excellent attendance - you're meeting standard requirements</li>
+                    <li><strong>Orange (65-74%):</strong> Warning zone - attention needed to improve attendance</li>
+                    <li><strong>Red (Below 65%):</strong> Critical status - immediate action required</li>
+                </ul>
+
+                <h3>Strategic Benefits for Academic Success</h3>
+                <p>Beyond simple tracking, this tool offers strategic advantages:</p>
+                <ul>
+                    <li><strong>Priority Identification:</strong> Quickly spot which subjects need the most attention</li>
+                    <li><strong>Resource Allocation:</strong> Decide where to focus your time and energy</li>
+                    <li><strong>Risk Management:</strong> Identify potential attendance issues before they become critical</li>
+                    <li><strong>Goal Setting:</strong> Set and track attendance improvement goals for each subject</li>
+                    <li><strong>Performance Correlation:</strong> Notice correlations between attendance and academic performance</li>
+                </ul>
+
+                <h3>Best Practices for Effective Tracking</h3>
+                <p>Maximize the effectiveness of your attendance tracking with these practices:</p>
+                <ul>
+                    <li><strong>Weekly Updates:</strong> Update your attendance data at least once per week</li>
+                    <li><strong>Consistent Naming:</strong> Use consistent, clear names for your subjects</li>
+                    <li><strong>Include All Classes:</strong> Track lectures, tutorials, labs, and seminars separately if they have different attendance requirements</li>
+                    <li><strong>Note Special Cases:</strong> Keep track of classes that might not count (such as cancelled classes or holidays)</li>
+                    <li><strong>Regular Review:</strong> Review your overall attendance weekly to make informed scheduling decisions</li>
+                </ul>
+
+                <h3>Advanced Tracking Strategies</h3>
+                <p>For students with complex schedules, consider these advanced approaches:</p>
+                <ul>
+                    <li><strong>Semester Separation:</strong> Track each semester separately for better academic period management</li>
+                    <li><strong>Credit-Hour Weighting:</strong> Give more attention to subjects with higher credit hours</li>
+                    <li><strong>Difficulty Assessment:</strong> Prioritize attendance in subjects you find more challenging</li>
+                    <li><strong>Professor Preferences:</strong> Some professors value attendance more than others - adjust your strategy accordingly</li>
+                </ul>
+
+                <h3>Troubleshooting Common Issues</h3>
+                <p>Address these common tracking challenges:</p>
+                <ul>
+                    <li><strong>Different Start Dates:</strong> If subjects started on different dates, adjust total class counts accordingly</li>
+                    <li><strong>Makeup Classes:</strong> Include makeup or additional classes in your total count</li>
+                    <li><strong>Lab vs. Lecture:</strong> Some subjects have separate attendance requirements for labs and lectures - track them separately</li>
+                    <li><strong>Cancelled Classes:</strong> Don't count cancelled classes in your total unless explicitly required by your institution</li>
+                </ul>
+
+                <h3>Integration with Other Tools</h3>
+                <p>Combine this tracker with our other calculators for comprehensive attendance management:</p>
+                <ul>
+                    <li><a href="/required-attendance-calculator.html">Required Attendance Calculator</a> - Calculate needed classes for each subject individually</li>
+                    <li><a href="/bunk-calculator.html">Bunk Calculator</a> - Determine safe skip limits for each subject</li>
+                    <li><a href="/attendance-to-grade-converter.html">Grade Converter</a> - Convert attendance percentages to grades</li>
+                    <li><a href="/working-days-calculator.html">Working Days Calculator</a> - Plan remaining academic days</li>
+                </ul>
+
+                <h3>Data Privacy and Local Storage</h3>
+                <p>Your attendance data is stored locally in your browser, ensuring privacy and allowing you to access your information on the same device. Remember to bookmark this page and update your data regularly for the most accurate tracking.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <style>
+        .subject-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .subject-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .subject-info h4 {
+            margin-bottom: 0.25rem;
+            color: #1f2937;
+        }
+
+        .subject-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .subject-percentage {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .subject-percentage.good {
+            color: #059669;
+            background: #ecfdf5;
+        }
+
+        .subject-percentage.warning {
+            color: #d97706;
+            background: #fffbeb;
+        }
+
+        .subject-percentage.danger {
+            color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .remove-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #b91c1c;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #6b7280;
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .subject-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .subject-percentage {
+                align-self: center;
+            }
+        }
+    </style>
+</body>
+</html>

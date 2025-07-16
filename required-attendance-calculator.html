@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Attendance Calculator | How Many Classes to Attend</title>
+    <meta name="description" content="Calculate how many more classes you need to attend to meet your university's attendance requirement.">
+    <link rel="canonical" href="https://attendancecalculator.com/required-attendance-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Required Attendance Calculator - How Many Classes to Reach Target %">
+    <meta property="og:description" content="Calculate how many classes you need to attend to reach your target attendance percentage. Free tool for students to plan their academic attendance.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.com/required-attendance-calculator.html">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Required Attendance Calculator - How Many Classes to Reach Target %">
+    <meta name="twitter:description" content="Calculate how many classes you need to attend to reach your target attendance percentage. Free tool for students to plan their academic attendance.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Required Attendance Calculator",
+        "description": "Calculate how many classes you need to attend to reach your target attendance percentage",
+        "url": "https://attendancecalculator.com/required-attendance-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Required Attendance Calculator",
+                "item": "https://attendancecalculator.com/required-attendance-calculator.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How many classes do I need to attend to reach 75% attendance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Enter your current attendance data and target percentage (75%) in our calculator. It will show exactly how many consecutive classes you need to attend to reach your goal."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "What if I can't reach my target attendance percentage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If the calculator shows it's impossible to reach your target, consider speaking with academic advisors about makeup classes, medical leave provisions, or alternative arrangements."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I plan my attendance for the entire semester?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Use this calculator to plan ahead. Input your current stats and see how many classes you need to maintain throughout the semester to meet requirements."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>Required Attendance Calculator</h1>
+                <p>Find out exactly how many more classes you need to attend to reach your target attendance percentage.</p>
+            </div>
+
+            <div class="tool-navigation">
+                <div class="container">
+                    <a href="/attendance-percentage-calculator.html" class="tool-nav-link">Attendance %</a>
+                    <a href="/required-attendance-calculator.html" class="tool-nav-link active">Required Classes</a>
+                    <a href="/bunk-calculator.html" class="tool-nav-link">Bunk Calculator</a>
+                    <a href="/class-attendance-tracker.html" class="tool-nav-link">Class Tracker</a>
+                    <a href="/attendance-to-grade-converter.html" class="tool-nav-link">Grade Converter</a>
+                    <a href="/working-days-calculator.html" class="tool-nav-link">Working Days</a>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Required Classes</h2>
+                    <form id="requiredForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="currentTotal">Current Total Classes</label>
+                            <input type="number" id="currentTotal" name="currentTotal" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentAttended">Current Classes Attended</label>
+                            <input type="number" id="currentAttended" name="currentAttended" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="targetPercentage">Target Attendance Percentage (%)</label>
+                            <input type="number" id="targetPercentage" name="targetPercentage" min="0" max="100" step="0.1" value="75" required>
+                        </div>
+                        <button type="button" onclick="calculateRequiredAttendance()" class="calculate-btn">Calculate Required Classes</button>
+                    </form>
+
+                    <div id="requiredResult"></div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>How to Use the Required Attendance Calculator</h2>
+                <p>The Required Attendance Calculator is an essential tool for students who need to plan their class attendance strategically. Whether you're falling behind on attendance or want to maintain a specific percentage, this calculator helps you determine exactly how many consecutive classes you need to attend to reach your goal.</p>
+
+                <h3>Understanding the Calculation</h3>
+                <p>The calculator uses a mathematical formula to determine the minimum number of classes you must attend consecutively to achieve your target attendance percentage. It assumes you will attend all upcoming classes without any absences.</p>
+
+                <h3>Step-by-Step Guide</h3>
+                <ol>
+                    <li><strong>Enter Current Total Classes:</strong> Input the total number of classes that have been conducted so far in your semester or academic term.</li>
+                    <li><strong>Enter Classes Attended:</strong> Input how many of those classes you have actually attended.</li>
+                    <li><strong>Set Target Percentage:</strong> Enter your desired attendance percentage (typically 75% for most institutions).</li>
+                    <li><strong>Calculate:</strong> Click the calculate button to see how many consecutive classes you need to attend.</li>
+                </ol>
+
+                <h3>Common Target Percentages</h3>
+                <p>Different educational institutions have varying attendance requirements:</p>
+                <ul>
+                    <li><strong>75% Attendance:</strong> The most common requirement in universities and colleges across India and many other countries.</li>
+                    <li><strong>80% Attendance:</strong> Required by some strict institutions and professional courses.</li>
+                    <li><strong>85% Attendance:</strong> Often required for scholarship students or competitive programs.</li>
+                    <li><strong>90% Attendance:</strong> Sometimes required for honors students or special programs.</li>
+                </ul>
+
+                <h3>Strategic Attendance Planning</h3>
+                <p>Use this calculator to:</p>
+                <ul>
+                    <li>Plan your semester attendance strategy</li>
+                    <li>Determine if you can recover from poor early attendance</li>
+                    <li>Set realistic attendance goals</li>
+                    <li>Avoid last-minute attendance panic</li>
+                    <li>Ensure exam eligibility well in advance</li>
+                </ul>
+
+                <h3>Important Considerations</h3>
+                <p>Keep these factors in mind when using the calculator:</p>
+                <ul>
+                    <li><strong>Consecutive Attendance:</strong> The calculation assumes you will attend ALL upcoming classes without any absences.</li>
+                    <li><strong>Future Classes:</strong> The number is based on attending consecutive future classes, not making up for past absences.</li>
+                    <li><strong>Medical Leave:</strong> Some institutions may not count medical leaves against attendance, which could affect your calculation.</li>
+                    <li><strong>Late Enrollment:</strong> If you joined late, check if your institution adjusts the total class count accordingly.</li>
+                </ul>
+
+                <h3>Related Tools</h3>
+                <p>Complement your attendance planning with our other calculators:</p>
+                <ul>
+                    <li><a href="/attendance-percentage-calculator.html">Attendance Percentage Calculator</a> - Check your current attendance status</li>
+                    <li><a href="/bunk-calculator.html">Bunk Calculator</a> - See how many classes you can safely skip</li>
+                    <li><a href="/class-attendance-tracker.html">Class Attendance Tracker</a> - Track attendance across multiple subjects</li>
+                    <li><a href="/attendance-to-grade-converter.html">Attendance to Grade Converter</a> - Convert your attendance to a grade</li>
+                </ul>
+
+                <h3>Frequently Asked Questions</h3>
+                <h4>What if I already exceed my target percentage?</h4>
+                <p>If your current attendance already meets or exceeds your target, the calculator will inform you that you're on track and don't need to attend additional consecutive classes for this goal.</p>
+
+                <h4>Can I use this for multiple subjects?</h4>
+                <p>Yes, but you'll need to calculate each subject separately. For tracking multiple subjects simultaneously, use our <a href="/class-attendance-tracker.html">Class Attendance Tracker</a>.</p>
+
+                <h4>What if the required number seems too high?</h4>
+                <p>If the calculator shows you need to attend an unrealistic number of consecutive classes, it might indicate that reaching your target percentage is not feasible with the remaining classes in the semester. Consider speaking with your academic advisor about options.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```text
+The title and description meta tags in the head section have been updated as requested.
+```

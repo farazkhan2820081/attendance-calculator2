@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunk Planner | How Many Classes Can I Miss?</title>
+    <meta name="description" content="Find out how many classes you can afford to bunk without falling below the required attendance.">
+    <link rel="canonical" href="https://attendancecalculator.com/bunk-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bunk Calculator - How Many Classes Can You Skip?">
+    <meta property="og:description" content="Calculate how many classes you can safely skip while maintaining your minimum attendance percentage. Free online bunk calculator for students.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.com/bunk-calculator.html">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Bunk Calculator - How Many Classes Can You Skip?">
+    <meta name="twitter:description" content="Calculate how many classes you can safely skip while maintaining your minimum attendance percentage. Free online bunk calculator for students.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Bunk Calculator",
+        "description": "Calculate how many classes you can safely skip while maintaining minimum attendance",
+        "url": "https://attendancecalculator.com/bunk-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Bunk Calculator",
+                "item": "https://attendancecalculator.com/bunk-calculator.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How many classes can I skip safely?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Enter your current attendance data and minimum required percentage. The calculator will show exactly how many classes you can skip while staying above the minimum requirement."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Is it safe to bunk classes near the minimum attendance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It's risky to skip classes when you're close to the minimum requirement. Always leave a buffer of 2-3% above the minimum to account for unexpected circumstances."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if I skip more classes than calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Skipping more classes than recommended may result in falling below minimum attendance requirements, potentially leading to academic penalties or exam disqualification."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav" id="mobileNav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>Bunk Planner Tool</h1>
+                <p>Find out how many classes you can safely skip while maintaining your minimum attendance percentage.</p>
+            </div>
+
+            <div class="tool-navigation">
+                <div class="container">
+                    <a href="/attendance-percentage-calculator.html" class="tool-nav-link">Attendance %</a>
+                    <a href="/required-attendance-calculator.html" class="tool-nav-link">Required Classes</a>
+                    <a href="/bunk-calculator.html" class="tool-nav-link active">Bunk Calculator</a>
+                    <a href="/class-attendance-tracker.html" class="tool-nav-link">Class Tracker</a>
+                    <a href="/attendance-to-grade-converter.html" class="tool-nav-link">Grade Converter</a>
+                    <a href="/working-days-calculator.html" class="tool-nav-link">Working Days</a>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Bunk Limit</h2>
+                    <form id="bunkForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="bunkTotal">Total Classes Conducted</label>
+                            <input type="number" id="bunkTotal" name="bunkTotal" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bunkAttended">Classes Attended</label>
+                            <input type="number" id="bunkAttended" name="bunkAttended" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="minimumPercentage">Minimum Required Percentage (%)</label>
+                            <input type="number" id="minimumPercentage" name="minimumPercentage" min="0" max="100" value="75" step="0.1" required>
+                        </div>
+                        <button type="button" onclick="calculateBunkLimit()" class="calculate-btn">Calculate Bunk Limit</button>
+                    </form>
+
+                    <div id="bunkResult"></div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>How to Use the Bunk Calculator</h2>
+                <p>Our bunk calculator helps you determine how many classes you can safely skip while still maintaining your required attendance percentage. This tool is particularly useful for students who need to balance their academic attendance with other commitments.</p>
+
+                <h3>Step-by-Step Guide</h3>
+                <ol>
+                    <li><strong>Enter Total Classes:</strong> Input the total number of classes that have been conducted so far in your course or semester.</li>
+                    <li><strong>Enter Attended Classes:</strong> Input how many classes you have actually attended.</li>
+                    <li><strong>Set Minimum Percentage:</strong> Enter your institution's minimum attendance requirement (usually 75%).</li>
+                    <li><strong>Calculate:</strong> Click the "Calculate Bunk Limit" button to see how many classes you can skip.</li>
+                </ol>
+
+                <h3>Understanding Your Results</h3>
+                <p>The calculator will show you:</p>
+                <ul>
+                    <li><strong>Maximum Skippable Classes:</strong> The number of consecutive classes you can miss</li>
+                    <li><strong>Final Attendance Percentage:</strong> Your attendance percentage after skipping the maximum allowed classes</li>
+                    <li><strong>Warning Messages:</strong> If you're already below the minimum requirement or cannot skip any classes</li>
+                </ul>
+
+                <h3>Important Considerations</h3>
+                <p>While this calculator helps you understand your attendance buffer, consider these factors:</p>
+                <ul>
+                    <li><strong>Academic Performance:</strong> Regular attendance often correlates with better academic performance</li>
+                    <li><strong>Participation Marks:</strong> Many courses include attendance and participation in grading</li>
+                    <li><strong>Institution Policies:</strong> Some institutions have strict policies about consecutive absences</li>
+                    <li><strong>Subject Importance:</strong> Critical topics might be covered in classes you're considering skipping</li>
+                    <li><strong>Makeup Classes:</strong> Some institutions conduct makeup classes that could affect your calculations</li>
+                </ul>
+
+                <h3>Common Attendance Requirements</h3>
+                <p>Different educational institutions have varying attendance requirements:</p>
+                <ul>
+                    <li><strong>75% Attendance:</strong> Most common requirement in universities and colleges</li>
+                    <li><strong>80% Attendance:</strong> Stricter requirement in some professional courses</li>
+                    <li><strong>85% Attendance:</strong> Required in some medical and engineering programs</li>
+                    <li><strong>90% Attendance:</strong> Very strict requirement in certain specialized courses</li>
+                </ul>
+
+                <h3>Strategic Attendance Planning</h3>
+                <p>Use this calculator as part of a broader attendance strategy:</p>
+                <ul>
+                    <li><strong>Plan Ahead:</strong> Use the calculator early in the semester to understand your buffer</li>
+                    <li><strong>Emergency Reserve:</strong> Keep some buffer for unexpected emergencies</li>
+                    <li><strong>Important Dates:</strong> Avoid skipping classes before exams or during important topics</li>
+                    <li><strong>Regular Monitoring:</strong> Check your status regularly throughout the semester</li>
+                </ul>
+
+                <h3>Academic Impact of Attendance</h3>
+                <p>Research shows that regular attendance contributes to:</p>
+                <ul>
+                    <li>Better understanding of course material</li>
+                    <li>Higher exam scores and overall grades</li>
+                    <li>Better relationships with instructors and peers</li>
+                    <li>Improved learning retention and comprehension</li>
+                    <li>Enhanced participation and engagement</li>
+                </ul>
+
+                <h3>Related Tools</h3>
+                <p>Complement your attendance planning with our other calculators:</p>
+                <ul>
+                    <li><a href="/attendance-percentage-calculator.html">Attendance Percentage Calculator</a> - Check your current attendance status</li>
+                    <li><a href="/required-attendance-calculator.html">Required Attendance Calculator</a> - See how many classes you need to attend</li>
+                    <li><a href="/class-attendance-tracker.html">Class Attendance Tracker</a> - Monitor multiple subjects simultaneously</li>
+                    <li><a href="/working-days-calculator.html">Working Days Calculator</a> - Plan your semester schedule</li>
+                </ul>
+
+                <h3>Tips for Smart Attendance Management</h3>
+                <ul>
+                    <li><strong>Track Early:</strong> Start monitoring your attendance from the beginning of the semester</li>
+                    <li><strong>Communicate:</strong> Inform instructors about planned absences when possible</li>
+                    <li><strong>Catch Up:</strong> Always catch up on missed material through notes or recordings</li>
+                    <li><strong>Peer Network:</strong> Build relationships with classmates for notes and updates</li>
+                    <li><strong>Official Policies:</strong> Understand your institution's specific attendance policies</li>
+                </ul>
+
+                <h3>Frequently Asked Questions</h3>
+                <p><strong>Q: Can I use this calculator for multiple subjects?</strong></p>
+                <p>A: This calculator works for individual subjects. For tracking multiple subjects, use our <a href="/class-attendance-tracker.html">Class Attendance Tracker</a>.</p>
+
+                <p><strong>Q: What if my institution has different attendance requirements?</strong></p>
+                <p>A: You can adjust the minimum percentage field to match your institution's specific requirements.</p>
+
+                <p><strong>Q: Does this account for makeup classes?</strong></p>
+                <p>A: No, this calculator assumes standard class scheduling. You'll need to manually account for any makeup classes.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

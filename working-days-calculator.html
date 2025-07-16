@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Days Calculator - Calculate Business Days Between Dates | Attendance Calculator</title>
+    <meta name="description" content="Calculate working days between two dates excluding weekends. Perfect for academic planning, semester calculations, and attendance management.">
+    <link rel="canonical" href="https://attendancecalculator.com/working-days-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Working Days Calculator - Calculate Business Days Between Dates">
+    <meta property="og:description" content="Calculate working days between two dates excluding weekends. Perfect for academic planning, semester calculations, and attendance management.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://attendancecalculator.com/working-days-calculator.html">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Working Days Calculator - Calculate Business Days Between Dates">
+    <meta name="twitter:description" content="Calculate working days between two dates excluding weekends. Perfect for academic planning, semester calculations, and attendance management.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Working Days Calculator",
+        "description": "Calculate working days between two dates excluding weekends for academic and business planning",
+        "url": "https://attendancecalculator.com/working-days-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://attendancecalculator.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Working Days Calculator",
+                "item": "https://attendancecalculator.com/working-days-calculator.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How are working days calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Working days are calculated by counting all days between two dates excluding weekends (Saturday and Sunday). Public holidays may also be excluded depending on settings."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Why do I need to calculate working days for attendance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Working days help in academic planning by determining actual class days in a semester, excluding weekends and holidays, for accurate attendance forecasting."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I include holidays in the calculation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The basic calculator excludes weekends. For holiday-specific calculations, you may need to manually adjust the results based on your institution's holiday calendar."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Attendance Calculator</a></h1>
+            </div>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools</button>
+                    <div class="dropdown-menu">
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                        <a href="/attendance-to-grade-converter.html">Grade Converter</a>
+                        <a href="/working-days-calculator.html">Working Days</a>
+                    </div>
+                </div>
+                <a href="/about-us.html">About</a>
+                <a href="/contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h1>Working Days Calculator</h1>
+                <p>Calculate the number of working days between two dates, excluding weekends. Perfect for academic and business planning.</p>
+            </div>
+
+            <div class="tool-navigation">
+                <div class="container">
+                    <a href="/attendance-percentage-calculator.html" class="tool-nav-link">Attendance %</a>
+                    <a href="/required-attendance-calculator.html" class="tool-nav-link">Required Classes</a>
+                    <a href="/bunk-calculator.html" class="tool-nav-link">Bunk Calculator</a>
+                    <a href="/class-attendance-tracker.html" class="tool-nav-link">Class Tracker</a>
+                    <a href="/attendance-to-grade-converter.html" class="tool-nav-link">Grade Converter</a>
+                    <a href="/working-days-calculator.html" class="tool-nav-link active">Working Days</a>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Working Days</h2>
+                    <form id="workingDaysForm" class="calculator-form">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                        <button type="button" onclick="calculateWorkingDays()" class="calculate-btn">Calculate Working Days</button>
+                    </form>
+
+                    <div id="workingDaysResult"></div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Understanding Working Days Calculation</h2>
+                <p>The Working Days Calculator is an essential tool for academic planning, helping students, teachers, and administrators determine the exact number of instructional days available in any given period. By excluding weekends (Saturday and Sunday), this calculator provides accurate working day counts for semester planning, attendance calculations, and academic scheduling.</p>
+
+                <h3>What Are Working Days?</h3>
+                <p>Working days, also known as business days or weekdays, refer to the days of the week when regular academic or business activities take place. In most educational systems, these are Monday through Friday, excluding:</p>
+                <ul>
+                    <li><strong>Saturdays and Sundays:</strong> Standard weekend days</li>
+                    <li><strong>Public Holidays:</strong> National and regional holidays (not included in basic calculation)</li>
+                    <li><strong>Institutional Holidays:</strong> School-specific holidays and breaks</li>
+                    <li><strong>Emergency Closures:</strong> Weather-related or other unexpected closures</li>
+                </ul>
+
+                <h3>Academic Applications of Working Days Calculation</h3>
+                <p>This calculator serves numerous academic purposes:</p>
+                <ul>
+                    <li><strong>Semester Planning:</strong> Determine total instructional days in a semester or term</li>
+                    <li><strong>Attendance Projections:</strong> Calculate maximum possible classes in a given period</li>
+                    <li><strong>Assignment Scheduling:</strong> Plan homework and project deadlines based on available class days</li>
+                    <li><strong>Exam Preparation:</strong> Count study days and preparation time</li>
+                    <li><strong>Academic Calendar Creation:</strong> Assist in developing institutional calendars</li>
+                </ul>
+
+                <h3>How to Use the Working Days Calculator</h3>
+                <p>Using the calculator is straightforward:</p>
+                <ol>
+                    <li><strong>Select Start Date:</strong> Choose the first day of your calculation period (typically semester start or current date)</li>
+                    <li><strong>Select End Date:</strong> Choose the last day of your calculation period (semester end or target date)</li>
+                    <li><strong>Calculate:</strong> The tool automatically excludes weekends and provides your working day count</li>
+                    <li><strong>Review Results:</strong> See total working days, total days, and weekend days for comprehensive planning</li>
+                </ol>
+
+                <h3>Strategic Academic Planning with Working Days</h3>
+                <p>Maximize your academic planning with these strategies:</p>
+                <ul>
+                    <li><strong>Attendance Budgeting:</strong> Use working days to calculate potential attendance percentages</li>
+                    <li><strong>Study Schedule Creation:</strong> Distribute study time across available working days</li>
+                    <li><strong>Project Management:</strong> Plan major assignments based on available instructional time</li>
+                    <li><strong>Exam Preparation:</strong> Calculate review time and practice sessions</li>
+                    <li><strong>Resource Allocation:</strong> Distribute learning resources across the available timeframe</li>
+                </ul>
+
+                <h3>Considerations for Different Educational Systems</h3>
+                <p>Working day calculations may vary based on institutional structure:</p>
+                <ul>
+                    <li><strong>Traditional Schedule:</strong> Monday-Friday classes with weekend breaks</li>
+                    <li><strong>Alternative Schedules:</strong> Some institutions have classes on Saturdays or different weekly patterns</li>
+                    <li><strong>Block Scheduling:</strong> Intensive courses with different daily patterns</li>
+                    <li><strong>Hybrid Learning:</strong> Combination of in-person and online instruction days</li>
+                    <li><strong>Year-Round Schools:</strong> Different break patterns affecting working day calculations</li>
+                </ul>
+
+                <h3>Integration with Attendance Planning</h3>
+                <p>Combine working days calculation with attendance management:</p>
+                <ul>
+                    <li><strong>Maximum Attendance Calculation:</strong> Use working days as the base for 100% attendance</li>
+                    <li><strong>Absence Planning:</strong> Calculate how many days you can miss while maintaining required percentages</li>
+                    <li><strong>Recovery Planning:</strong> Determine available days to improve attendance</li>
+                    <li><strong>Goal Setting:</strong> Set realistic attendance targets based on remaining working days</li>
+                </ul>
+
+                <h3>Holiday and Break Considerations</h3>
+                <p>While our basic calculator excludes weekends, remember to account for:</p>
+                <ul>
+                    <li><strong>National Holidays:</strong> Independence Day, Labor Day, Christmas, etc.</li>
+                    <li><strong>Religious Holidays:</strong> Institution-specific observances</li>
+                    <li><strong>Spring/Fall Breaks:</strong> Traditional academic break periods</li>
+                    <li><strong>Reading Days:</strong> Exam preparation periods</li>
+                    <li><strong>Professional Development Days:</strong> Teacher training days when classes are cancelled</li>
+                </ul>
+
+                <h3>Business and Professional Applications</h3>
+                <p>Beyond academics, working days calculation supports:</p>
+                <ul>
+                    <li><strong>Internship Planning:</strong> Calculate total work days in internship periods</li>
+                    <li><strong>Project Deadlines:</strong> Determine realistic timelines for academic projects</li>
+                    <li><strong>Research Planning:</strong> Schedule data collection and analysis timeframes</li>
+                    <li><strong>Conference Preparation:</strong> Plan presentation and paper preparation schedules</li>
+                </ul>
+
+                <h3>Advanced Planning Techniques</h3>
+                <p>Enhance your planning with these advanced approaches:</p>
+                <ul>
+                    <li><strong>Buffer Time Inclusion:</strong> Add extra days for unexpected events</li>
+                    <li><strong>Milestone Setting:</strong> Create intermediate goals based on working day segments</li>
+                    <li><strong>Workload Distribution:</strong> Evenly distribute tasks across available working days</li>
+                    <li><strong>Seasonal Adjustments:</strong> Account for seasonal variations in productivity and availability</li>
+                </ul>
+
+                <h3>Technology Integration and Automation</h3>
+                <p>Modern approaches to working days calculation:</p>
+                <ul>
+                    <li><strong>Calendar Integration:</strong> Sync with digital calendars for automatic holiday exclusion</li>
+                    <li><strong>Institutional Systems:</strong> Integration with student information systems</li>
+                    <li><strong>Mobile Applications:</strong> On-the-go access to working days calculations</li>
+                    <li><strong>API Integration:</strong> Automated calculations for academic software</li>
+                </ul>
+
+                <h3>Related Tools for Comprehensive Planning</h3>
+                <p>Combine this calculator with our other tools for complete academic management:</p>
+                <ul>
+                    <li><a href="/attendance-percentage-calculator.html">Attendance Percentage Calculator</a> - Use working days to calculate attendance rates</li>
+                    <li><a href="/required-attendance-calculator.html">Required Attendance Calculator</a> - Plan classes needed based on available working days</li>
+                    <li><a href="/class-attendance-tracker.html">Class Attendance Tracker</a> - Monitor progress across the calculated time period</li>
+                    <li><a href="/academic-calendar.html">Academic Calendar</a> - View sample calendars and planning templates</li>
+                </ul>
+
+                <h3>Accuracy and Limitations</h3>
+                <p>Understanding the calculator's scope and limitations:</p>
+                <ul>
+                    <li><strong>Weekend Definition:</strong> Assumes Saturday-Sunday weekends (standard in most countries)</li>
+                    <li><strong>Holiday Exclusion:</strong> Does not automatically account for public or institutional holidays</li>
+                    <li><strong>Time Zone Considerations:</strong> Calculations based on calendar dates without time zone adjustments</li>
+                    <li><strong>Institution-Specific Variations:</strong> Some schools may have different weekly schedules</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Attendance Calculator</h3>
+                    <p>Your go-to tool for attendance management and calculation.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Tools</h4>
+                        <a href="/attendance-percentage-calculator.html">Attendance Percentage</a>
+                        <a href="/required-attendance-calculator.html">Required Classes</a>
+                        <a href="/bunk-calculator.html">Bunk Calculator</a>
+                        <a href="/class-attendance-tracker.html">Class Tracker</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="/about-us.html">About Us</a>
+                        <a href="/contact-us.html">Contact</a>
+                        <a href="/faq.html">FAQ</a>
+                        <a href="/academic-calendar.html">Academic Calendar</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                        <a href="/terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Attendance Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
